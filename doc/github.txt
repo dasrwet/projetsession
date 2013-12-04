@@ -1,0 +1,141 @@
+GitHub
+
+https://github.com/
+
+Git
+
+http://marklodato.github.com/visual-git-guide/index-en.html
+https://github.com/erlang/otp/wiki/Writing-good-commit-messages
+
+Education
+
+https://github.com/edu
+http://www.atlassian.com/software/views/bitbucket-academic-license.jsp
+http://www.assembla.com/plans
+https://codeplane.com/
+
+Create an account at GitHub.
+
+Read:
+
+http://help.github.com/win-set-up-git/
+
+http://www.ralfebert.de/blog/tools/git_screencast/
+
+http://scottr.org/presentations/git-in-5-minutes/
+
+-------------------------------------------------------------
+
+After creating an account, create a remote repository.
+The following is what I did for Model Concepts.
+
+Create a New Repository
+Project Name: model_concepts
+Description:
+A graphical design tool for domain models of dartling.
+
+Based on:
+Magic Boxes [in Java]
+http://code.google.com/p/magic-boxes/
+
+-------------------------------------------------------------
+
+Git with Git Bash
+
+Work with a local repository
+
+cd git/dart/model/model_concepts
+
+git add .
+or
+git add file
+or
+git rm file
+or
+git add -u (to remove all)
+
+git commit -m "state briefly changes"
+or
+git commit -a -m "state briefly changes"
+
+git status
+
+git push
+git push origin master
+
+
+Ignoring files
+
+http://help.github.com/ignore-files/
+
+create .gitignore in model_concepts folder
+add
+model_concepts.dart.app.js
+*~
+to exclude JavaScript file that is already in the repository:
+git rm --cached model_concepts.dart.app.js
+
+
+Tagging for versions (spirals)
+
+http://learn.github.com/p/tagging.html
+
+git tag
+git tag -a s00 -m 'spiral 00'
+git tag
+
+To push tags to the remote repository:
+
+git push --tags
+
+Switching from master to spiral
+
+from master to tag
+git checkout s01
+from tag to branch
+git checkout -b s01a
+to use branch
+git checkout s01a
+
+Switching from spiral to master
+
+to exclude js:
+git checkout model_concepts.dart.app.js
+or (see http://scottr.org/presentations/git-in-5-minutes/)
+git stash
+
+git checkout master
+
+
+Branches
+
+git checkout -b topic-name-1 master
+git checkout -b topic-name-2 master
+git checkout topic-name-1
+git checkout topic-name-2
+
+git checkout master
+git merge topic-name-1
+git branch -d topic-name-1
+
+git merge topic-name-2
+resolve conflicts
+git status
+git commit -a (describe the merge resolution here)
+git status
+git branch -d topic-name-2
+
+to loose all changes after the last commit:
+git reset --hard
+
+to work temporarily on a branch and then delete it
+git checkout -b temp master
+...
+git branch -D temp
+
+
+Team Work
+
+git pull origin master
+
+

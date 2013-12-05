@@ -23,7 +23,7 @@ class MesTests extends ui.VerticalPanel {
     dePanel.setCaptionHtml('<canvas id="canvas" width="800" height="800"></canvas>');
     Element el= dePanel.getElement();
     CanvasElement canvas = el.querySelector('#canvas'); //document.querySelector('#canvas');
-    Board board = new Board(canvas,p1,p2,offreentries);
+    Board board = new Board(canvas,p1,p2,offreentries.activites.first);
     
     //horizontal panel
     ui.HorizontalPanel hpanel = new ui.HorizontalPanel();

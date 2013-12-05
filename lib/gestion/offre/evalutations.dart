@@ -8,7 +8,7 @@ class Evalutation extends EvalutationGen {
  
   Evalutation.withId(Concept concept, Entreprise entreprise, Contrainte contrainte) : 
     super.withId(concept, entreprise, contrainte); 
- 
+  
 } 
  
 class Evalutations extends EvalutationsGen { 

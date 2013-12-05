@@ -1,6 +1,7 @@
 part of gestion_offre_app;
 
-Map<String, String> colorMap() {
+Map<String, String> colorMap(String value) {
+  colorList().remove(value);
   return {
     'azure':      '#f0ffff',
     'beige':      '#f5f5dc',
@@ -11,7 +12,6 @@ Map<String, String> colorMap() {
     'coral':      '#ff7f50',
     'gold':       '#ffd700',
     'gray':       '#909090',
-    'green':      '#009000',
     'ivory':      '#fffff0',
     'khaki':      '#f0e68c',
     'linen':      '#faf0e6',
@@ -35,7 +35,6 @@ List<String> colorList() {
     'coral',
     'gold',
     'gray',
-    'green',
     'ivory',
     'khaki',
     'linen',
@@ -50,4 +49,4 @@ List<String> colorList() {
 
 String randomColor() => randomListElement(colorList());
 
-String randomColorCode() => colorMap()[randomColor()];
+String randomColorCode() => colorMap(randomColor())[randomColor()];

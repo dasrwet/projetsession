@@ -4,8 +4,8 @@ part of gestion_offre;
  
 class GestionRepo extends Repo { 
  
-  static final gestionDomainCode = "gestion"; 
-  static final gestionOffreModelCode = "offre"; 
+  static final gestionDomainCode = "Gestion"; 
+  static final gestionOffreModelCode = "Offre"; 
  
   GestionRepo([String code="GestionRepo"]) : super(code) { 
     _initGestionDomain(); 

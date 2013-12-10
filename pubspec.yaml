@@ -7,6 +7,6 @@ environment:
   sdk: '>=0.8.10+8 <2.0.0'
 dependencies:
   browser: '>=0.9.0 <0.10.0'
-  dart_web_toolkit: any
+  dart_web_toolkit: '>=0.3.25'
   dartling: '>=1.0.1 <2.0.0'
   dartling_default_app: '>=1.0.1 <2.0.0'

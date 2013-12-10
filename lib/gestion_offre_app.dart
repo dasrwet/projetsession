@@ -38,7 +38,7 @@ library gestion_offre_app;
  
 import "dart:convert";
 import "dart:html"; 
-import 'dart:async';
+//import 'dart:async';
 //import "dart:convert";
 import 'dart:math';
  
@@ -63,6 +63,7 @@ part 'app/GestionActivite.dart';
 part 'app/GestionEntreprise.dart';
 part 'app/GestionEvaluation.dart';
 part 'app/GestionOffres.dart';
+part 'app/SaveBd.dart';
 //part 'app/GestionContrainte.dart';
 part 'app/Analyse.dart';
 part 'app/Admin.dart';
@@ -70,4 +71,5 @@ part 'app/board.dart';
 part 'util/color.dart';
 part 'util/random.dart';
 
- 
+Savebd DataBase = new Savebd();
+Compteur compteur;

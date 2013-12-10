@@ -159,7 +159,7 @@ var gestionOffreModelJson = r'''
             ]
         },
         {
-            "name":"Evalutation",
+            "name":"Evaluation",
             "entry":false,
             "x":304,
             "y":272,
@@ -169,6 +169,52 @@ var gestionOffreModelJson = r'''
                 {
                     "sequence":10,
                     "name":"valeur",
+                    "category":"attribute",
+                    "type":"String",
+                    "init":"",
+                    "essential":false,
+                    "sensitive":false
+                }
+            ]
+        },
+        {
+            "name":"Compteur",
+            "entry":true,
+            "x":158,
+            "y":97,
+            "width":120,
+            "height":120,
+            "items":[
+                {
+                    "sequence":10,
+                    "name":"nbreactivite",
+                    "category":"attribute",
+                    "type":"int",
+                    "init":"",
+                    "essential":false,
+                    "sensitive":false
+                },
+                {
+                    "sequence":20,
+                    "name":"nbrecritere",
+                    "category":"attribute",
+                    "type":"int",
+                    "init":"",
+                    "essential":false,
+                    "sensitive":false
+                },
+                {
+                    "sequence":30,
+                    "name":"nbreentreprise",
+                    "category":"attribute",
+                    "type":"int",
+                    "init":"",
+                    "essential":false,
+                    "sensitive":false
+                },
+                {
+                    "sequence":40,
+                    "name":"autre",
                     "category":"attribute",
                     "type":"String",
                     "init":"",
@@ -209,7 +255,7 @@ var gestionOffreModelJson = r'''
         },
         {
             "box1Name":"Entreprise",
-            "box2Name":"Evalutation",
+            "box2Name":"Evaluation",
             "category":"relationship",
             "internal":false,
             "box1box2Name":"evaluations",
@@ -222,7 +268,7 @@ var gestionOffreModelJson = r'''
             "box2box1Id":true
         },
         {
-            "box1Name":"Evalutation",
+            "box1Name":"Evaluation",
             "box2Name":"Contrainte",
             "category":"relationship",
             "internal":true,

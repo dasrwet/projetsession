@@ -8,7 +8,6 @@ class Contrainte extends ContrainteGen {
  
   Contrainte.withId(Concept concept, Activite activite, Critere critere) : 
     super.withId(concept, activite, critere); 
-  
  
 } 
  

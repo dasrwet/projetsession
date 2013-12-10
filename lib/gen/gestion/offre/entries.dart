@@ -14,13 +14,9 @@ class OffreEntries extends ModelEntries {
     concept = model.concepts.singleWhereCode("Critere"); 
     entries["Critere"] = new Criteres(concept); 
     concept = model.concepts.singleWhereCode("Entreprise"); 
-    entries["Entreprise"] = new Entreprises(concept);
-    //-------------------------------------
-    //concept = model.concepts.singleWhereCode("Contrainte"); 
-    //entries["Contrainte"] = new Contraintes(concept);
-    //concept = model.concepts.singleWhereCode("Evaluation"); 
-    //entries["Evaluation"] = new Contraintes(concept);
-    //--------------------------------------------------------
+    entries["Entreprise"] = new Entreprises(concept); 
+    concept = model.concepts.singleWhereCode("Compteur"); 
+    entries["Compteur"] = new Compteurs(concept); 
     return entries; 
   } 
  
@@ -41,8 +37,11 @@ class OffreEntries extends ModelEntries {
     if (concept.code == "Entreprise") { 
       return new Entreprises(concept); 
     } 
-    if (concept.code == "Evalutation") { 
-      return new Evalutations(concept); 
+    if (concept.code == "Evaluation") { 
+      return new Evaluations(concept); 
+    } 
+    if (concept.code == "Compteur") { 
+      return new Compteurs(concept); 
     } 
   } 
  
@@ -63,8 +62,11 @@ class OffreEntries extends ModelEntries {
     if (concept.code == "Entreprise") { 
       return new Entreprise(concept); 
     } 
-    if (concept.code == "Evalutation") { 
-      return new Evalutation(concept); 
+    if (concept.code == "Evaluation") { 
+      return new Evaluation(concept); 
+    } 
+    if (concept.code == "Compteur") { 
+      return new Compteur(concept); 
     } 
   } 
  
@@ -74,11 +76,8 @@ class OffreEntries extends ModelEntries {
  
   Activites get activites => getEntry("Activite"); 
   Criteres get criteres => getEntry("Critere"); 
-  Entreprises get entreprises => getEntry("Entreprise");
-  //-------------------------
-  //Contraintes get contraintes => getEntry("Contrainte");
-  //Evalutations get evaluations => getEntry("Evalutation");
-  //-------------------------------
+  Entreprises get entreprises => getEntry("Entreprise"); 
+  Compteurs get compteurs => getEntry("Compteur"); 
  
 } 
  

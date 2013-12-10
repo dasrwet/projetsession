@@ -5,14 +5,14 @@ part of gestion_offre;
 abstract class EntrepriseGen extends ConceptEntity<Entreprise> { 
  
   EntrepriseGen(Concept concept) : super.of(concept) { 
-    Concept evalutationConcept = concept.model.concepts.singleWhereCode("Evalutation"); 
-    setChild("evaluations", new Evalutations(evalutationConcept)); 
+    Concept evaluationConcept = concept.model.concepts.singleWhereCode("Evaluation"); 
+    setChild("evaluations", new Evaluations(evaluationConcept)); 
   } 
  
   EntrepriseGen.withId(Concept concept, String numentreprise) : super.of(concept) { 
     setAttribute("numentreprise", numentreprise); 
-    Concept evalutationConcept = concept.model.concepts.singleWhereCode("Evalutation"); 
-    setChild("evaluations", new Evalutations(evalutationConcept)); 
+    Concept evaluationConcept = concept.model.concepts.singleWhereCode("Evaluation"); 
+    setChild("evaluations", new Evaluations(evaluationConcept)); 
   } 
  
   String get numentreprise => getAttribute("numentreprise"); 
@@ -27,7 +27,7 @@ abstract class EntrepriseGen extends ConceptEntity<Entreprise> {
   String get responsable => getAttribute("responsable"); 
   set responsable(String a) => setAttribute("responsable", a); 
   
-  Evalutations get evaluations => getChild("evaluations"); 
+  Evaluations get evaluations => getChild("evaluations"); 
   
   Entreprise newEntity() => new Entreprise(concept); 
   Entreprises newEntities() => new Entreprises(concept); 

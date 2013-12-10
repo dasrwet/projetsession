@@ -112,9 +112,13 @@ class Board {
     context.arc(x, y, r, 0, PI*2, true);
   }
 
-  void rectangle(x, y, w, h) {
+  void rectangle(x, y, w, h, color, lib) {
     context.beginPath();
     context.rect(x,y,w,h);
+    context.fillText(lib,x+w+3, y+9);
+    //context.shadowColor=color;
+    //context.strokeStyle=color;
+    //context.fillStyle=color;
     context.closePath();
     context.stroke();
   }
@@ -135,7 +139,7 @@ class Board {
       listMoyen.add(double.parse(contrainte.valeurs));
       vMax=max(vMax, double.parse(contrainte.valeurs));
       listx.add(contrainte.critere.libelle);
-           for(Evalutation evaluation in contrainte.evaluations)
+           for(Evaluation evaluation in contrainte.evaluations)
            { 
           if(!lisNentreprise.contains(evaluation.entreprise.designation)){
             lisNentreprise.add(evaluation.entreprise.designation);
@@ -150,10 +154,15 @@ class Board {
     droitX();
     courbe(listSeul,'Seuil', '#FF0000');
     courbe(listMoyen,'Moyenne', '#009000');
+    int yg=100;
     for(var entreprise in lisNentreprise)
-    {
-      courbe(infoEntreprise[entreprise.toString()],entreprise.toString(), randomColorCode());
+    { var clr=randomColorCode();
+      
+      courbe(infoEntreprise[entreprise.toString()],entreprise.toString(),clr);
+      rectangle(pd.x + pf.x+12 , yg, 20, 10, clr, entreprise.toString());
+      yg=yg+13;
     }
+    rectangle(pd.x + pf.x+8 , 4, 100, pf.y+4,'#009000' ,'');
   }
 }
 

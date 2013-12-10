@@ -52,7 +52,8 @@ part "gestion/offre/activites.dart";
 part "gestion/offre/contraintes.dart"; 
 part "gestion/offre/criteres.dart"; 
 part "gestion/offre/entreprises.dart"; 
-part "gestion/offre/evalutations.dart"; 
+part "gestion/offre/evaluations.dart"; 
+part "gestion/offre/compteurs.dart"; 
  
 part "gen/gestion/offre/entries.dart"; 
 //part "gen/gestion/offre/administrations.dart"; 
@@ -61,8 +62,8 @@ part "gen/gestion/offre/activites.dart";
 part "gen/gestion/offre/contraintes.dart"; 
 part "gen/gestion/offre/criteres.dart"; 
 part "gen/gestion/offre/entreprises.dart"; 
-part "gen/gestion/offre/evalutations.dart"; 
+part "gen/gestion/offre/evaluations.dart"; 
+part "gen/gestion/offre/compteurs.dart"; 
  
 part "gen/gestion/models.dart"; 
 part "gen/gestion/repository.dart"; 
- 

@@ -22,8 +22,10 @@ class Principale {
  
   Principale(this.domain) {
     session = domain.newSession();
-    OffreEntries model = domain.getModelEntries('offre');
-    //contacts = model.contacts;
+    OffreEntries model = domain.getModelEntries('Offre');
+    DataBase.Start(model);
+    //DataBase.drop(model);
+    var contr =model.activites.first.contraintes.first;
     
     var rootPanel = ui.RootLayoutPanel.get();
     
@@ -32,6 +34,7 @@ class Principale {
     rootPanel.add(vPanel);
     var title = new ui.Label('Test');
     vPanel.add(title);
+    //debalejson(model);
     //var todos = new MesTests(model);
     var todos = new GestionOffres(model);
     vPanel.add(todos);
@@ -42,6 +45,7 @@ class Principale {
 
     //updateDisplay();
   }
+  principale() {}
 
   /**
    * Save list of task to local storage.
@@ -50,22 +54,40 @@ class Principale {
   //  window.localStorage['todos-dartling-dwt'] = JSON.encode(contacts.toJson());
  // }
 
+    saveAs(OffreEntries model) { 
+    window.localStorage['compteurdb'] = JSON.encode(model.compteurs.toJson());
+    window.localStorage['entreprisedb'] = JSON.encode(model.entreprises.toJson());
+    window.localStorage['activitedb'] = JSON.encode(model.activites.toJson());
+    window.localStorage['criteredb'] = JSON.encode(model.criteres.toJson());
+ }
   /**
    * Update header and footer components on page.
    */
-  updateDisplay() {
-    //header.updateDisplay();
-    //footer.updateDisplay();
-    
-   /*  panelP.getElement().style.border = "3px solid #00c";
-     panelP.getContentWidget().getElement().style.margin = "5px 10px 10px 10px";
-     panelP.getContentWidget().getElement().style.padding = "10px 10px 10px 10px";
-     panelP.getContentWidget().getElement().style.border = "1px solid #ccf";
-
-    
-    panelP.add(panelL);
-    panelP.add(panelF);
-    ui.RootPanel.get().add(panelP);*/
+  debalejson(OffreEntries model)
+  {
+    String jsoncompteur = window.localStorage['compteurdb'];
+    String jsonentreprise = window.localStorage['entreprisedb'];
+    String jsonactivite = window.localStorage['activitedb'];
+    String jsoncritere = window.localStorage['criteredb'];
+    if (jsoncompteur != null && jsonentreprise != null && 
+        jsonactivite != null && jsoncritere != null) {
+      try {
+        model.compteurs.fromJson(JSON.decode(jsoncompteur));
+        model.entreprises.fromJson(JSON.decode(jsonentreprise));
+        model.activites.fromJson(JSON.decode(jsonactivite));
+        model.criteres.fromJson(JSON.decode(jsoncritere));
+      } on Exception catch(e) {
+        print(e);
+      }
+     }
+  }
+  
+  updateDisplay(OffreEntries model) {
+    model.activites.clear();
+    model.entreprises.clear();
+    model.criteres.clear();
+    model.compteurs.clear();
+    saveAs(model);
   }
 }
 

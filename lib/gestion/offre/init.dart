@@ -1,11 +1,12 @@
-                                                                                                                                                                                    part of gestion_offre; 
+                                                                                                                                                                                                                                                                    part of gestion_offre; 
  
 // lib/gestion/offre/init.dart 
  
 initGestionOffre(var entries) { 
-  _initCriteres(entries); 
   _initActivites(entries); 
+  _initCriteres(entries); 
   _initEntreprises(entries); 
+  _initCompteurs(entries); 
 } 
  
 _initActivites(var entries) { 
@@ -14,7 +15,6 @@ _initActivites(var entries) {
   activite.titre = "value0"; 
   activite.description = "value0"; 
   entries.activites.add(activite); 
-  
  
   activite = new Activite(entries.activites.concept); 
   activite.numactivite = "value1"; 
@@ -68,23 +68,9 @@ _initActivites(var entries) {
   activite.numactivite = "value9"; 
   activite.titre = "value9"; 
   activite.description = "value9"; 
-  
-  var contrainte = new Contrainte(activite.contraintes.concept);
-  contrainte.critere=entries.criteres.firstWhereAttribute("numcritere", "value0");
-  contrainte.type="Entier";
-  contrainte.valeurs="5";
-  contrainte.seuil="2";
-  contrainte.activite=activite;
-  activite.contraintes.add(contrainte);
-  var contrainte1 = new Contrainte(activite.contraintes.concept);
-  contrainte1.critere=entries.criteres.firstWhereAttribute("numcritere", "value1");
-  contrainte1.type="Entier";
-  contrainte1.valeurs="3";
-  contrainte1.seuil="1";
-  contrainte1.activite=activite;
-  activite.contraintes.add(contrainte1);
-  entries.activites.add(activite);
-  } 
+  entries.activites.add(activite); 
+ 
+} 
  
 _initCriteres(var entries) { 
   Critere critere = new Critere(entries.criteres.concept); 
@@ -209,6 +195,79 @@ _initEntreprises(var entries) {
   entreprise.raisonsocial = "value9"; 
   entreprise.responsable = "value9"; 
   entries.entreprises.add(entreprise); 
+ 
+} 
+ 
+_initCompteurs(var entries) { 
+  Compteur compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 5152; 
+  compteur.nbrecritere = 6277; 
+  compteur.nbreentreprise = 4147; 
+  compteur.autre = "value0"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 4315; 
+  compteur.nbrecritere = 1232; 
+  compteur.nbreentreprise = 3488; 
+  compteur.autre = "value1"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 2649; 
+  compteur.nbrecritere = 108; 
+  compteur.nbreentreprise = 5981; 
+  compteur.autre = "value2"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 1777; 
+  compteur.nbrecritere = 9202; 
+  compteur.nbreentreprise = 9899; 
+  compteur.autre = "value3"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 2262; 
+  compteur.nbrecritere = 4008; 
+  compteur.nbreentreprise = 3329; 
+  compteur.autre = "value4"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 9786; 
+  compteur.nbrecritere = 9578; 
+  compteur.nbreentreprise = 8877; 
+  compteur.autre = "value5"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 8094; 
+  compteur.nbrecritere = 8393; 
+  compteur.nbreentreprise = 8200; 
+  compteur.autre = "value6"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 8331; 
+  compteur.nbrecritere = 941; 
+  compteur.nbreentreprise = 4108; 
+  compteur.autre = "value7"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 7995; 
+  compteur.nbrecritere = 789; 
+  compteur.nbreentreprise = 6524; 
+  compteur.autre = "value8"; 
+  entries.compteurs.add(compteur); 
+ 
+  compteur = new Compteur(entries.compteurs.concept); 
+  compteur.nbreactivite = 7862; 
+  compteur.nbrecritere = 7746; 
+  compteur.nbreentreprise = 3783; 
+  compteur.autre = "value9"; 
+  entries.compteurs.add(compteur); 
  
 } 
  

@@ -64,7 +64,7 @@ class Analyse extends ui.VerticalPanel {
       el.querySelector('#canvas').style.margin="10px 20px 20px 40px";
       el.querySelector('#canvas').style.backgroundColor="white";
       var activit = offreentries.activites.firstWhereAttribute("numactivite", combo.getValue(combo.getSelectedIndex()));
-      print(activit.numactivite);
+      
       Board board = new Board(canvas,p1,p2,activit); //
      //save.valide(offreentries);
     })); 

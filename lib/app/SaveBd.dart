@@ -9,10 +9,8 @@ class Savebd {
   
   save(OffreEntries model)
   {
-    if(model.compteurs.count>0)
-    {
-      model.compteurs.update(model.compteurs.first, compteur);
-    }
+    model.compteurs.clear();
+      model.compteurs.add(compteur);
     window.localStorage['data'] = JSON.encode(model.toJson());
   }
   
@@ -21,7 +19,7 @@ class Savebd {
     // activite
     Activite actti = new Activite(offreentries.activites.concept);
     actti.numactivite='a001b007';
-    actti.titre='Contsruction';
+    actti.titre='Construction';
     actti.description='Contsruction de la zone d\'embassade';
     
     
@@ -218,6 +216,7 @@ class Savebd {
         compteur.nbreactivite=0;
         compteur.nbrecritere=0;
         compteur.nbreentreprise=0; 
+        //offreentries.compteurs.add(compteur);
       }
     
     save(offreentries);
@@ -229,9 +228,12 @@ class Savebd {
   Start(OffreEntries model)
   {
     String jsondata = window.localStorage['data'];
-    if (jsondata!=null){
+   
+    if (jsondata!=null && jsondata.length>233){
       try {
         model.fromJson(JSON.decode(jsondata));
+        compteur = new Compteur(model.compteurs.concept);
+        compteur = model.compteurs.first;
       } on Exception catch(e) {
         print(e);
       }
@@ -239,7 +241,7 @@ class Savebd {
      {
        //initialiser
        _initTest(model);
-       save(model);
+       //save(model);
      }
   }
   
@@ -247,6 +249,7 @@ class Savebd {
   drop(OffreEntries model) {
     model.clear();
     save(model);
+    window.localStorage['data'];
   }
   
 }

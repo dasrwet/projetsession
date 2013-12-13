@@ -25,6 +25,7 @@ class GestionOffres extends ui.VerticalPanel {
   
   ui.VerticalPanel _Administrator(OffreEntries offreentries){
     return new Admin(offreentries);
+    //return new GestionActivite(offreentries);
   }
   
   ui.VerticalPanel _Analyze(OffreEntries offreentries){

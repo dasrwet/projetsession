@@ -24,9 +24,9 @@ class Principale {
     session = domain.newSession();
     OffreEntries model = domain.getModelEntries('Offre');
     DataBase.Start(model);
+    var cpt = compteur;
     //DataBase.drop(model);
-    var contr =model.activites.first.contraintes.first;
-    
+   
     var rootPanel = ui.RootLayoutPanel.get();
     
     var vPanel = new ui.VerticalPanel();

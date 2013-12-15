@@ -65,7 +65,7 @@ class MesTests extends ui.VerticalPanel {
     cellFormatter.setHorizontalAlignment(0, 0, i18n.HasHorizontalAlignment.ALIGN_CENTER);
 
 // Add some standard form options
-    layout.setHtml(1, 0, "Cles:");
+    /*layout.setHtml(1, 0, "Cles:");
     layout.setWidget(1, 1, cles);
     layout.setHtml(2, 0, "Nom:");
     layout.setWidget(2, 1, nom);
@@ -79,11 +79,21 @@ class MesTests extends ui.VerticalPanel {
     layout.setWidget(6, 1, adresse);
     layout.setWidget(7, 0, btnAjout);
     layout.setWidget(7, 1, btnAnnuler);
-    
+    */
+   var  i=0;
+    for (var val in colorList())
+    { var btn = new ui.Button(colorMap(val)[val]);
+      btn.getElement().style.background=colorMap(val)[val];
+      btn.getElement().style.border="0px";
+    layout.setHtml(i, 0, val);
+    layout.setWidget(i, 1, btn);
+    i++;
+    }
+    layout.getElement().style.background="white";
     ui.DecoratorPanel decPanel = new ui.DecoratorPanel();
     decPanel.setWidget(layout);
     
-    add(dePanel);
+    add(decPanel);
   }
  
   //----------------------fonction de sauvegarde------------------

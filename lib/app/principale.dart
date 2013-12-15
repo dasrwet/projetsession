@@ -38,6 +38,7 @@ class Principale {
     //var todos = new MesTests(model);
     var todos = new GestionOffres(model);
     vPanel.add(todos);
+   
 
     //header = new Header(this);
     //Todos todos = new Todos(this);

@@ -12,11 +12,12 @@ class Analyse extends ui.VerticalPanel {
   Analyse(OffreEntries offreentries) {
     ui.ListBox combo = new ui.ListBox();
     ui.Button valide = new ui.Button('Lancer');
-    ui.TextBox pointXmin = new ui.TextBox(); pointXmin.text='30';
-    ui.TextBox pointYmin = new ui.TextBox(); pointYmin.text='0';
-    ui.TextBox pointXmax = new ui.TextBox(); pointXmax.text='600';
-    ui.TextBox pointYmax = new ui.TextBox(); pointYmax.text='400';
+    ui.DoubleBox pointXmin = new ui.DoubleBox(); pointXmin.text='30';
+    ui.DoubleBox pointYmin = new ui.DoubleBox(); pointYmin.text='0';
+    ui.DoubleBox pointXmax = new ui.DoubleBox(); pointXmax.text='600';
+    ui.DoubleBox pointYmax = new ui.DoubleBox(); pointYmax.text='400';
     
+     
       // test
    // _initTest(offreentries);
       //fin

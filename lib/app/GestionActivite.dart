@@ -148,7 +148,6 @@ btnSave.addClickHandler(new event.ClickHandlerAdapter((event.ClickEvent e) {
     ui.FlexCellFormatter cellFormatter = layout.getFlexCellFormatter();
     
     cellFormatter.setHorizontalAlignment(0, 0, i18n.HasHorizontalAlignment.ALIGN_CENTER);
-    print(compteur.nbreactivite);
     cles.text='Act_'+(compteur.nbreactivite+1).toString();
     cles.enabled=false;
     //activite.numactivite='Act_'+(compteur.nbreactivite+1).toString();

@@ -10,13 +10,21 @@ class GestionOffres extends ui.VerticalPanel {
   var btnQuitter= new ui.Button("Quitter");
   
   GestionOffres(OffreEntries offreentries) {
-    conteneur.add(_Debut(offreentries));
+    setSize("100%", "auto");
+    conteneur.setSize("100%", "auto");
+    conteneur.clearAndSetStyleName("conteneur");
+    //conteneur.add(
+        _Debut(offreentries);
+        //);
     add(conteneur);
     conteneurbtn.add(btnQuitter);
+    conteneurbtn.clearAndSetStyleName("conteneurBtn");
     add(conteneurbtn);
     
     btnRetour.addClickHandler(new event.ClickHandlerAdapter((event.ClickEvent e) {
-      conteneur.clear(); conteneur.add(_Debut(offreentries));
+      
+      conteneur.clear(); 
+      conteneur.add(_Debut(offreentries));
       })); 
     btnQuitter.addClickHandler(new event.ClickHandlerAdapter((event.ClickEvent e) {
       
@@ -32,10 +40,16 @@ class GestionOffres extends ui.VerticalPanel {
     return new Analyse(offreentries);
   }
   
-  ui.CaptionPanel _Debut(OffreEntries offreentries){
+  //ui.DecoratorPanel 
+  _Debut(OffreEntries offreentries){
+    
+    
+    clearAndSetStyleName("offre");
     
     /*Definition du panel de debut  et des boutons */
     ui.CaptionPanel Panretour = new ui.CaptionPanel("Bienvenue sur la gestion des appels d'offres");
+    Panretour.setSize("90%", "auto");
+   
     var btnAdmin= new ui.Button("Gestion des donnees");
     var btnAnalyse= new ui.Button("Analyses");
     
@@ -47,10 +61,11 @@ class GestionOffres extends ui.VerticalPanel {
     /*Definition du conteneur des boutons  */
     ui.FlexTable layout = new ui.FlexTable();
     layout.setCellSpacing(6);
+    layout.clearAndSetStyleName("layoutBtn");
     ui.FlexCellFormatter cellFormatter = layout.getFlexCellFormatter();
     cellFormatter.setHorizontalAlignment(0, 0, i18n.HasHorizontalAlignment.ALIGN_CENTER);
-    layout.setWidget(1, 0,btnAdmin);
-    layout.setWidget(1, 1,btnAnalyse);
+    layout.setWidget(0, 0,btnAdmin);
+    layout.setWidget(0, 1,btnAnalyse);
     
     btnAdmin.addClickHandler(new event.ClickHandlerAdapter((event.ClickEvent e) {
       conteneur.clear(); conteneur.add(_Administrator(offreentries));
@@ -61,12 +76,13 @@ class GestionOffres extends ui.VerticalPanel {
       conteneurbtn.clear(); conteneurbtn.add(btnRetour); conteneurbtn.add(btnQuitter);
       }));
     
-    Panretour.setContentWidget(layout);
+    conteneur.add(layout);
+    /*Panretour.setContentWidget(layout);
     Panretour.getElement().style.border = "2px solid #CC88CF";
     Panretour.getContentWidget().getElement().style.margin = "5px 10px 10px 10px";
     Panretour.getContentWidget().getElement().style.padding = "10px 10px 10px 10px";
-    Panretour.getContentWidget().getElement().style.border = "1px solid #ccf";
+    Panretour.getContentWidget().getElement().style.border = "1px solid #ccf";*/
     
-    return Panretour;
+    //return conteneur;
   }
 }

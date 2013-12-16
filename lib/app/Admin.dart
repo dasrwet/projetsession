@@ -17,7 +17,8 @@ class Admin extends ui.VerticalPanel {
     
     _Construction(offreentries);
     
- 
+    //Tablepanel.clearAndSetStyleName("tabpanelStyle");
+    
     add(Tablepanel);
     
     

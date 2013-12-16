@@ -10,10 +10,18 @@ class GestionEvaluation extends ui.VerticalPanel {
   var btnLancer= new ui.Button("Lancer");
   var enregistrer= new ui.Button("Enregistrer");
   ui.Grid grilChoix ;
-  
+  List<ui.DoubleBox> listEval = new List<ui.DoubleBox>();
+  Entreprise entreprise; 
+ Activite activite;
+ Evaluation evaluation;
+ Contrainte contrainte;
   
   GestionEvaluation(OffreEntries offreentries) {
     this.setStylePrimaryName('activite');
+    entreprise = new Entreprise(offreentries.entreprises.concept);
+    activite = new Activite(offreentries.activites.concept);
+    contrainte = new Contrainte(activite.contraintes.concept);
+    evaluation = new Evaluation(contrainte.evaluations.concept);
     add(formEval(offreentries));
     grilChoix = new ui.Grid(1,4);
     //grilChoix.setCellFormatter();
@@ -30,8 +38,10 @@ class GestionEvaluation extends ui.VerticalPanel {
     btnLancer.addClickHandler(new event.ClickHandlerAdapter((event.ClickEvent e) {
       
       if(comboActivite.getValue(comboActivite.getSelectedIndex())!='0'){
-       var act = offreentries.activites.firstWhereAttribute('numactivite',comboActivite.getValue(comboActivite.getSelectedIndex()));
-        AjoutChoix(act.contraintes, comboEntreprise.getValue(comboEntreprise.getSelectedIndex()));
+       activite = offreentries.activites.firstWhereAttribute('numactivite',comboActivite.getValue(comboActivite.getSelectedIndex()));
+       entreprise=offreentries.entreprises.firstWhereAttribute('numentreprise',comboEntreprise.getValue(comboEntreprise.getSelectedIndex()));
+
+       AjoutChoix(activite.contraintes, comboEntreprise.getValue(comboEntreprise.getSelectedIndex()));
       }else{
         window.alert('Merci de choisir une activite');
       }
@@ -39,7 +49,38 @@ class GestionEvaluation extends ui.VerticalPanel {
     }));
     
     enregistrer.addClickHandler(new event.ClickHandlerAdapter((event.ClickEvent e) {
+      int i=0;
+      if(comboEntreprise.getValue(comboEntreprise.getSelectedIndex())!='0' && comboActivite.getValue(comboActivite.getSelectedIndex())!='0'){
+      for (var contrainte in activite.contraintes)
+      {
+        var _evaluation = new Evaluation(contrainte.evaluations.concept);
+        _evaluation.valeur=listEval.elementAt(i).text;
+        _evaluation.contrainte=contrainte;
+        _evaluation.entreprise=entreprise;
+        if(!contrainte.evaluations.add(_evaluation))
+        {
+          contrainte.evaluations.remove(_evaluation);
+          contrainte.evaluations.add(_evaluation);
+        }
+        i++;
+      }
+      var act = offreentries.activites.singleWhereOid(activite.oid);
+      offreentries.activites.remove(act);
       
+      offreentries.activites.add(activite);
+     DataBase.save(offreentries);
+     window.alert('Action effectuer avec succes');
+     
+     if(grilChoix.getRowCount()>1){
+       for(int a=grilChoix.getRowCount()-1;  a >0 ;  a--){
+         grilChoix.removeRow(a);
+       }  
+     }
+     
+     comboActivite.setItemSelected(0, true);
+     comboEntreprise.setItemSelected(0, true);
+      }else{window.alert('Merci de selectionner une activite et/ou une entreprise');}
+     
     }));
     
     
@@ -94,6 +135,7 @@ AjoutChoix(Contraintes contraintes, String entr){
     
     }
     int i=1;
+    listEval.clear();
     for(var contrainte in contraintes)
     { var value='';
       ui.DoubleBox eval = new ui.DoubleBox();
@@ -108,12 +150,14 @@ AjoutChoix(Contraintes contraintes, String entr){
         }
       }
       eval.text=value;
+      listEval.add(eval);
+      
       grilChoix.insertRow(i);
       var btnSupp= new ui.Button("Supp");
       grilChoix.setHtml(i, 0,  '<h4>'+contrainte.critere.libelle+'</h4>');
       grilChoix.setHtml(i, 1,  '<h4>'+contrainte.valeurs+'</h4>');
       grilChoix.setHtml(i, 2,  '<h4>'+contrainte.seuil+'</h4>');
-      grilChoix.setWidget(i, 3, eval); 
+      grilChoix.setWidget(i, 3, listEval.elementAt(i-1)); 
       
       i++;
       

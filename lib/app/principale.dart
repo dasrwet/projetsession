@@ -26,25 +26,46 @@ class Principale {
     DataBase.Start(model);
     var cpt = compteur;
     //DataBase.drop(model);
-   
-    var rootPanel = ui.RootLayoutPanel.get();
-    
-    var vPanel = new ui.VerticalPanel();
-    vPanel.spacing = 10;
-    rootPanel.add(vPanel);
-    var title = new ui.Label('Test');
-    vPanel.add(title);
-    //debalejson(model);
-    //var todos = new MesTests(model);
     var todos = new GestionOffres(model);
-    vPanel.add(todos);
+    
+    var rootPanel = ui.RootLayoutPanel.get();
+           
+    ui.DockPanel dock = new ui.DockPanel();
+    dock.clearAndSetStyleName("cw-DockPanel");
+    dock.spacing = 4;
+    dock.setSize("90%", "100%");
+    dock.setHorizontalAlignment(i18n.HasHorizontalAlignment.ALIGN_CENTER);
+    
+    ui.ScrollPanel scroller = new ui.ScrollPanel(dock);
+    scroller.clearAndSetStyleName("cnt_body");
+    
+    
+    // Create a menu bar
+    ui.MenuBar menu = new ui.MenuBar();
+    menu.setAutoOpen(true);
+    menu.setWidth("500px");
+    menu.setAnimationEnabled(true);
+    // Create the Home menu
+    ui.MenuBar HomeMenu = new ui.MenuBar(true);
+    HomeMenu.setAnimationEnabled(true);
+    menu.addItem(new ui.MenuItem("Accueil", false, subMenu:HomeMenu));
+    // Create the Exit menu
+    ui.MenuBar exitMenu = new ui.MenuBar(true);
+    menu.addSeparator();
+    menu.addItem(new ui.MenuItem("Quitter", false, subMenu:exitMenu));
+    // Create the help menu
+    ui.MenuBar helpMenu = new ui.MenuBar(true);
+    menu.addSeparator();
+    menu.addItem(new ui.MenuItem("Aide?", true, subMenu:helpMenu));
+    
+
+    // Add text all around
+    dock.addWidgetTo(new ui.Html("<div id='header'></div>"), util.DockLayoutConstant.NORTH);
+    dock.addWidgetTo(new ui.Html("<div id='footer'></br></br>Copyright GestOffre &copy; - Tous droits réservés<br /><a href='#'> Nous contacter</a></div>"), util.DockLayoutConstant.SOUTH);
+    dock.addWidgetTo(menu, util.DockLayoutConstant.NORTH);
+    dock.addWidgetTo(todos, util.DockLayoutConstant.CENTER);     
+    rootPanel.add(scroller);       
    
-
-    //header = new Header(this);
-    //Todos todos = new Todos(this);
-    //footer = new Footer(this, todos);
-
-    //updateDisplay();
   }
   principale() {}
 

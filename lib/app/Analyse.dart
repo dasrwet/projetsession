@@ -10,14 +10,19 @@ class Analyse extends ui.VerticalPanel {
   Principale principale ;
   
   Analyse(OffreEntries offreentries) {
+    setSize("100%", "auto");
+    setStylePrimaryName('analyse');
     ui.ListBox combo = new ui.ListBox();
     ui.Button valide = new ui.Button('Lancer');
     ui.DoubleBox pointXmin = new ui.DoubleBox(); pointXmin.text='30';
-    ui.DoubleBox pointYmin = new ui.DoubleBox(); pointYmin.text='0';
-    ui.DoubleBox pointXmax = new ui.DoubleBox(); pointXmax.text='600';
-    ui.DoubleBox pointYmax = new ui.DoubleBox(); pointYmax.text='400';
+    pointXmin.setWidth("30px");
+    ui.TextBox pointYmin = new ui.TextBox(); pointYmin.text='0';
+    pointYmin.setWidth("30px");
+    ui.TextBox pointXmax = new ui.TextBox(); pointXmax.text='600';
+    pointXmax.setWidth("30px");
+    ui.TextBox pointYmax = new ui.TextBox(); pointYmax.text='400';
+    pointYmax.setWidth("30px");
     
-     
       // test
    // _initTest(offreentries);
       //fin
@@ -28,18 +33,16 @@ class Analyse extends ui.VerticalPanel {
         var act = new Activite(offreentries.activites.concept);
         combo.addItem(activite.titre, activite.numactivite);
       }
-      ui.CaptionPanel dePanel = new ui.CaptionPanel();
-      dePanel.setSize('750px', '750px');
-      dePanel.setCaptionHtml('<center><canvas id="canvas" width="900" height="700"></canvas></center>');
+      ui.HtmlPanel dePanel = new ui.HtmlPanel('<center><canvas id="canvas" width="900" height="700"></canvas></center>');
+      dePanel.setStylePrimaryName('containtcanvas');
+     // dePanel.setSize('98%', '750px');
+      //dePanel.set('');
       Element el= dePanel.getElement();
       el.style.border="0";
       
-      ui.ScrollPanel scrpnel = new ui.ScrollPanel();
-      scrpnel.setSize('100%', '500px');
-      scrpnel.getElement().style.alignContent="center";
-      scrpnel.add(dePanel);
+
     ui.CaptionPanel PanelParam = new ui.CaptionPanel('Grille d\'analyse');
-    PanelParam.setSize('100%', '50px');
+    PanelParam.setSize('98%', '50px');
     ui.FlexTable layout = new ui.FlexTable();
     layout.setCellSpacing(6);
     ui.FlexCellFormatter cellFormatter = layout.getFlexCellFormatter();
@@ -70,16 +73,18 @@ class Analyse extends ui.VerticalPanel {
      //save.valide(offreentries);
     })); 
     PanelParam.add(layout);
-    PanelParam.getElement().style.margin="2px 2px 8px 2px";
+    PanelParam.setStylePrimaryName('param');
+    //PanelParam.getElement().style.margin="2px 2px 8px 2px";
     PanelParam.getElement().style.borderRadius="4px 4px 4px 4px";
-    PanelParam.getElement().style.backgroundColor="white";
+    //PanelParam.getElement().style.backgroundColor="white";
     PanelParam.getElement().style.font="verdana";
     PanelParam.getElement().style.fontSize="11px";
     PanelParam.getElement().style.fontWeight="bold";
     
     
     add(PanelParam);
-    add(scrpnel);
+    add(dePanel);
+  
     
   }
 }

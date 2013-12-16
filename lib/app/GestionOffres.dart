@@ -24,7 +24,7 @@ class GestionOffres extends ui.VerticalPanel {
     btnRetour.addClickHandler(new event.ClickHandlerAdapter((event.ClickEvent e) {
       
       conteneur.clear(); 
-      conteneur.add(_Debut(offreentries));
+      _Debut(offreentries);
       })); 
     btnQuitter.addClickHandler(new event.ClickHandlerAdapter((event.ClickEvent e) {
       
@@ -47,9 +47,7 @@ class GestionOffres extends ui.VerticalPanel {
     clearAndSetStyleName("offre");
     
     /*Definition du panel de debut  et des boutons */
-    ui.CaptionPanel Panretour = new ui.CaptionPanel("Bienvenue sur la gestion des appels d'offres");
-    Panretour.setSize("90%", "auto");
-   
+    
     var btnAdmin= new ui.Button("Gestion des donnees");
     var btnAnalyse= new ui.Button("Analyses");
     
@@ -75,7 +73,6 @@ class GestionOffres extends ui.VerticalPanel {
       conteneur.clear(); conteneur.add(_Analyze(offreentries));
       conteneurbtn.clear(); conteneurbtn.add(btnRetour); conteneurbtn.add(btnQuitter);
       }));
-    
     conteneur.add(layout);
     /*Panretour.setContentWidget(layout);
     Panretour.getElement().style.border = "2px solid #CC88CF";

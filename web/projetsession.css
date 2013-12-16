@@ -16,6 +16,19 @@ body {
    max-height: 900px; 
 }
 
+.cw-DockPanel a {
+   text-decoration: none;
+   display:block;
+   width: 120px;
+   margin: 0px 2px 0px 2px ;
+   font-family: verdana;
+   font-weight: bold;
+   font-style:oblique;
+   text-align: center;
+   color:white;
+   background-image: url("img/title1.png");
+}
+
 .cnt_body{ 
    margin-left: 110px;   
  }

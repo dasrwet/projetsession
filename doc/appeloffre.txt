@@ -1,3 +1,12 @@
-To do
+Les Membres du groupes:
+
+AUTORS
+	1- DJIMADJA COMLAN STANISLAS GILDAS  111 082 891
+	2- Aurelien BETBEUI KWANDJEU         111 056 506
+	3- EVESSEHOU MOISE DOVONOU           111 027 257
+	4- THYERRY BAYI 		             111 016 826
+
+
+
 
 nom du model: ModelAppeldoffre

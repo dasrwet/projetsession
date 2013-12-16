@@ -48,15 +48,15 @@ class Principale {
     // Create the Home menu
     ui.MenuBar HomeMenu = new ui.MenuBar(true);
     HomeMenu.setAnimationEnabled(true);
-    menu.addItem(new ui.MenuItem("Accueil", false, subMenu:HomeMenu));
+    menu.addItem(new ui.MenuItem('<a href="../doc/problem.txt" target="autre">Problemes</a>', true, subMenu:HomeMenu));
     // Create the Exit menu
     ui.MenuBar exitMenu = new ui.MenuBar(true);
     menu.addSeparator();
-    menu.addItem(new ui.MenuItem("Quitter", false, subMenu:exitMenu));
+    menu.addItem(new ui.MenuItem('<a href="../doc/appeloffre.txt" target="autre">Equipe</a>', true, subMenu:exitMenu));
     // Create the help menu
     ui.MenuBar helpMenu = new ui.MenuBar(true);
     menu.addSeparator();
-    menu.addItem(new ui.MenuItem("Aide?", true, subMenu:helpMenu));
+    menu.addItem(new ui.MenuItem('<a href="../README.md" target="autre">Aide? </a>', true, subMenu:helpMenu));
     
 
     // Add text all around

@@ -1,5 +1,17 @@
 Problems
 
+Les problemes remcontrer:
+-Sauvegarde du Modele (probleme resolu)
+
+-Rafraichissement du TablePanel pour avoir fraichement les valeurs saisi sur un onglet dans un autre onglet
+	(probleme non resolu sachant que le stockage local s'effectue tres bien)
+	
+-Rafraichissement automatique d'un grid (probleme resolu)
+
+-Centralisation des contenu d'un panel (prbleme resolu avec beaucoup d'ajustement non fiable)
+
+-Autres problemes major sont resolu.
+
 ----------------
 
 Old problem (not present in the last version)
